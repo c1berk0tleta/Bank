@@ -2,9 +2,8 @@
 
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,6 +14,7 @@
    <children>
       <AnchorPane fx:id="logPane" layoutX="1.0" layoutY="-2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="503.0">
          <children>
+            <ComboBox fx:id="groupUsers" layoutX="234.0" layoutY="84.0" prefWidth="150.0" promptText="Группа пользователей" />
             <PasswordField fx:id="passField" layoutX="234.0" layoutY="182.0" promptText=" Пароль" style="-fx-background-radius: 6;" />
             <TextField fx:id="logField" layoutX="234.0" layoutY="132.0" promptText="Логин" style="-fx-background-radius: 6;" />
             <Button fx:id="logButton" layoutX="257.0" layoutY="245.0" mnemonicParsing="false" onAction="#login" prefHeight="17.0" prefWidth="75.0" style="-fx-background-radius: 6;" text="в IT" />
@@ -23,12 +23,6 @@
                   <Font name="Comic Sans MS" size="27.0" />
                </font>
             </Label>
-            <MenuButton fx:id="groupUsers" layoutX="231.0" layoutY="90.0" mnemonicParsing="false" text="Группа пользователей">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Пользователь" />
-                <MenuItem mnemonicParsing="false" text="Администратор" />
-              </items>
-            </MenuButton>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="userPane" layoutX="1.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="503.0" visible="false">
