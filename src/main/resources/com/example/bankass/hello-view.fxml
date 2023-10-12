@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane cache="true" cacheHint="SPEED" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="300.0" style="-fx-background-color: #43DD63;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="33.0" layoutY="14.0" text="Авторизация" wrapText="true">
+         <font>
+            <Font name="Segoe UI" size="39.0" />
+         </font>
+      </Label>
+      <PasswordField layoutX="76.0" layoutY="119.0" promptText=" Пароль" style="-fx-background-radius: 6;" />
+      <TextField layoutX="76.0" layoutY="82.0" promptText="Логин" style="-fx-background-radius: 6;" />
+      <Button layoutX="113.0" layoutY="205.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="75.0" style="-fx-background-radius: 6;" text="Войти" />
+      <ComboBox layoutX="76.0" layoutY="157.0" prefHeight="25.0" prefWidth="149.0" promptText="Войти как:" style="-fx-background-radius: 6;" />
+   </children>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
+</AnchorPane>
