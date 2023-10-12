@@ -2,25 +2,45 @@
 
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane cache="true" cacheHint="SPEED" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="300.0" style="-fx-background-color: #43DD63;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane cache="true" cacheHint="SPEED" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankass.Controller">
    <children>
-      <Label layoutX="33.0" layoutY="14.0" text="Авторизация" wrapText="true">
-         <font>
-            <Font name="Segoe UI" size="39.0" />
-         </font>
-      </Label>
-      <PasswordField layoutX="76.0" layoutY="119.0" promptText=" Пароль" style="-fx-background-radius: 6;" />
-      <TextField layoutX="76.0" layoutY="82.0" promptText="Логин" style="-fx-background-radius: 6;" />
-      <Button layoutX="113.0" layoutY="205.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="75.0" style="-fx-background-radius: 6;" text="Войти" />
-      <ComboBox layoutX="76.0" layoutY="157.0" prefHeight="25.0" prefWidth="149.0" promptText="Войти как:" style="-fx-background-radius: 6;" />
+      <AnchorPane fx:id="logPane" layoutX="1.0" layoutY="-2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="503.0">
+         <children>
+            <PasswordField fx:id="passField" layoutX="234.0" layoutY="182.0" promptText=" Пароль" style="-fx-background-radius: 6;" />
+            <TextField fx:id="logField" layoutX="234.0" layoutY="132.0" promptText="Логин" style="-fx-background-radius: 6;" />
+            <Button fx:id="logButton" layoutX="257.0" layoutY="245.0" mnemonicParsing="false" onAction="#login" prefHeight="17.0" prefWidth="75.0" style="-fx-background-radius: 6;" text="в IT" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="61.0" prefHeight="33.0" prefWidth="284.0" text="Вход в &quot;AssBank&quot;" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="27.0" />
+               </font>
+            </Label>
+            <MenuButton layoutX="231.0" layoutY="90.0" mnemonicParsing="false" text="Группа пользователей">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mainPane" layoutX="1.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="503.0" visible="false">
+         <children>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="322.0" prefWidth="277.0">
+               <children>
+                  <Button layoutX="36.0" layoutY="22.0" mnemonicParsing="false" text="Button" />
+                  <Button fx:id="exitButton" layoutX="36.0" layoutY="136.0" mnemonicParsing="false" onAction="#exit" text="Выход" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
    </children>
    <rotationAxis>
       <Point3D />
