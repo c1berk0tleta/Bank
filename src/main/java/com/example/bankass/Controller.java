@@ -3,11 +3,10 @@ package com.example.bankass;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.ResourceBundle;
 
 public class Controller {
 
@@ -16,6 +15,12 @@ public class Controller {
 
     @FXML
     public Button logButton, exitButton;
+
+    @FXML
+    public MenuButton groupUsers;
+
+    @FXML
+    public MenuItem userItem;
 
     @FXML
     public TextField logField;
@@ -27,14 +32,16 @@ public class Controller {
     public Label outputText;
 
     @FXML
-    public AnchorPane logPane,mainPane;
+    public AnchorPane logPane,userPane;
 
     @FXML
     void login(ActionEvent event) {
 
         if (passField.getText().equals(passMass[0]) && logField.getText().equals(logMass[0])) {
-            logPane.setVisible(false);
-            mainPane.setVisible(true);
+            if (groupUsers.equals("Пользователь")) {
+                logPane.setVisible(false);
+                userPane.setVisible(true);
+            }
 
         } else {
             outputText.setStyle("-fx-text-fill: #c61010");
@@ -44,8 +51,9 @@ public class Controller {
 
     @FXML
     void exit (ActionEvent event) {
-        mainPane.setVisible(false);
+        userPane.setVisible(false);
         logPane.setVisible(true);
     }
+
 
 }

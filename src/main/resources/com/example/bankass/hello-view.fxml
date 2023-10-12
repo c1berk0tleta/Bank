@@ -23,15 +23,15 @@
                   <Font name="Comic Sans MS" size="27.0" />
                </font>
             </Label>
-            <MenuButton layoutX="231.0" layoutY="90.0" mnemonicParsing="false" text="Группа пользователей">
+            <MenuButton fx:id="groupUsers" layoutX="231.0" layoutY="90.0" mnemonicParsing="false" text="Группа пользователей">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
+                <MenuItem mnemonicParsing="false" text="Пользователь" />
+                <MenuItem mnemonicParsing="false" text="Администратор" />
               </items>
             </MenuButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="mainPane" layoutX="1.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="503.0" visible="false">
+      <AnchorPane fx:id="userPane" layoutX="1.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="503.0" visible="false">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="322.0" prefWidth="277.0">
                <children>
