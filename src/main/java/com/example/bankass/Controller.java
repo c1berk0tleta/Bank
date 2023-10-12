@@ -22,12 +22,6 @@ public class Controller implements Initializable {
     @FXML
     public ComboBox groupUsers;
 
-    public ComboBox getGroupUsers() {
-        ObservableList<String> group = FXCollections.observableArrayList("Пользователь", "Администратор");
-        groupUsers.setValue("Пользователь");
-        return groupUsers;
-    }
-
     @FXML
     public MenuItem userItem;
 
@@ -47,11 +41,8 @@ public class Controller implements Initializable {
     void login () {
         if (passField.getText().equals(passMass[0]) && logField.getText().equals(logMass[0])) {
             if (groupUsers.getValue().equals("Пользователь")) {
-                logPane.setVisible(false);
-                userPane.setVisible(true);
+                // hide admin functions
             }
-        }
-        else if (groupUsers.getValue().equals("Администратор")){
             logPane.setVisible(false);
             userPane.setVisible(true);
         }
@@ -62,7 +53,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void exit (ActionEvent event) {
+    void exit () {
         userPane.setVisible(false);
         logPane.setVisible(true);
     }
