@@ -15,22 +15,57 @@
 
 <AnchorPane cache="true" cacheHint="SPEED" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="503.0" style="-fx-background-color: #85BFFF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankass.Controller">
    <children>
-      <AnchorPane fx:id="logPane" layoutX="211.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="292.0">
+      <AnchorPane layoutX="211.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="292.0">
          <children>
-            <ComboBox fx:id="groupUsers" layoutX="68.0" layoutY="103.0" prefHeight="25.0" prefWidth="167.0" promptText="Группа пользователей" style="-fx-background-radius: 6;" />
-            <PasswordField fx:id="passField" layoutX="68.0" layoutY="187.0" prefHeight="25.0" prefWidth="167.0" promptText=" Пароль" style="-fx-background-radius: 6;" />
-            <TextField fx:id="logField" layoutX="68.0" layoutY="143.0" prefHeight="25.0" prefWidth="167.0" promptText="Логин" style="-fx-background-radius: 6;" />
-            <Button fx:id="logButton" layoutX="109.0" layoutY="234.0" mnemonicParsing="false" onAction="#login" prefHeight="17.0" prefWidth="75.0" style="-fx-background-radius: 6;" text="в IT" />
-            <Label fx:id="outputText" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="39.0" prefHeight="33.0" prefWidth="284.0" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font name="Comic Sans MS" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="outputText1" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" prefHeight="39.0" prefWidth="299.0" text="Добро пожаловать!" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font name="Segoe UI Bold" size="22.0" />
-               </font>
-            </Label>
+            <Pane fx:id="trancHistoryPane" prefHeight="364.0" prefWidth="292.0" visible="false">
+               <children>
+                  <Label alignment="CENTER" layoutX="-3.0" prefHeight="33.0" prefWidth="299.0" text="История транзакций" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="logPane" prefHeight="364.0" prefWidth="292.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="299.0" text="Добро пожаловать!" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Segoe UI Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="groupUsers" layoutX="66.0" layoutY="105.0" prefHeight="25.0" prefWidth="167.0" promptText="Группа пользователей" style="-fx-background-radius: 6;" />
+                  <TextField fx:id="logField" layoutX="66.0" layoutY="144.0" prefHeight="25.0" prefWidth="167.0" promptText="Логин" style="-fx-background-radius: 6;" />
+                  <PasswordField fx:id="passField" layoutX="66.0" layoutY="182.0" prefHeight="25.0" prefWidth="167.0" promptText=" Пароль" style="-fx-background-radius: 6;" />
+                  <Button fx:id="logButton" layoutX="112.0" layoutY="229.0" mnemonicParsing="false" onAction="#login" prefHeight="17.0" prefWidth="75.0" style="-fx-background-radius: 6;" text="в IT" />
+                  <Label fx:id="outputText" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="39.0" prefHeight="33.0" prefWidth="284.0" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="Comic Sans MS" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="addUserPane" layoutX="-3.0" prefHeight="364.0" prefWidth="299.0" visible="false">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" prefHeight="72.0" prefWidth="292.0" text="Введите данные пользователя" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="Consolas" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="76.0" layoutY="120.0" promptText="ФИО" />
+                  <TextField layoutX="76.0" layoutY="159.0" promptText="Логин" />
+                  <PasswordField layoutX="76.0" layoutY="198.0" promptText="Пароль" />
+                  <Button fx:id="newUser" layoutX="112.0" layoutY="270.0" mnemonicParsing="false" text="Добавить" />
+               </children>
+            </Pane>
+            <Pane fx:id="profilePane" prefHeight="364.0" prefWidth="292.0" visible="false">
+               <children>
+                  <Label fx:id="profileLabel" alignment="CENTER" prefHeight="17.0" prefWidth="292.0" text="Профиль">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="userPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="211.0">
@@ -38,7 +73,9 @@
             <Pane prefHeight="364.0" prefWidth="211.0" style="-fx-background-color: #1968BF;">
                <children>
                   <Button fx:id="exitButton" layoutX="58.0" layoutY="306.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="97.0" text="Выход" />
-                  <Button layoutX="58.0" layoutY="59.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Профиль" />
+                  <Button fx:id="profileButton" layoutX="32.0" layoutY="66.0" mnemonicParsing="false" onAction="#enableProfilePane" prefHeight="25.0" prefWidth="149.0" text="Профиль" />
+                  <Button fx:id="addUserButton" layoutX="32.0" layoutY="268.0" mnemonicParsing="false" onAction="#enableAddUserPane" prefHeight="25.0" prefWidth="149.0" text="Добавить пользователя" />
+                  <Button fx:id="trancHistoryButton" layoutX="31.0" layoutY="103.0" mnemonicParsing="false" onAction="#enableTrancHistoryPane" prefHeight="25.0" prefWidth="149.0" text="История транзакций" />
                   <ImageView fx:id="rock" disable="true" fitHeight="364.0" fitWidth="212.0" pickOnBounds="true">
                      <image>
                         <Image url="@dwayne-johnson.gif" />
@@ -49,7 +86,7 @@
                         <Font name="Bauhaus 93" size="27.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-5.0" layoutY="338.0" prefHeight="25.0" prefWidth="211.0" text="ООО &quot;Гитлер&quot;" textFill="WHITE">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-5.0" layoutY="338.0" prefHeight="25.0" prefWidth="211.0" text="ООО &quot;Скала&quot;" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
