@@ -1,4 +1,5 @@
 package com.example.bankass;
+
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -15,11 +16,17 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.sql.*;
 
 public class Controller implements Initializable {
 
-    String[] logMass = new String[]{"1"};
-    String[] passMass = new String[]{"2"};
+
+    String url = "jdbc:mysql://213.167.217.126:3306/AssBank";
+    String user = "Danilas";
+    String password = "p@ssw0rd";
+//    String[] logMass = new String[]{"1"};
+//    String[] passMass = new String[]{"2"};
+    private Connection connection;
 
     @FXML
     public Button logButton, exitButton, addUserButton, newUser, profileButton, trancHistoryButton;
@@ -61,11 +68,13 @@ public class Controller implements Initializable {
         disableAll();
         profilePane.setVisible(true);
     }
+
     @FXML
     void enableTrancHistoryPane() {
         disableAll();
         trancHistoryPane.setVisible(true);
     }
+
     @FXML
     void enableAddUserPane() {
         disableAll();
@@ -78,24 +87,44 @@ public class Controller implements Initializable {
         addUserPane.setVisible(false);
     }
 
-    void disableButtons () {
+    void disableButtons() {
         profileButton.setDisable(true);
         trancHistoryButton.setDisable(true);
         addUserButton.setDisable(true);
     }
-    void enableButtons () {
+
+    void enableButtons() {
         profileButton.setDisable(false);
         trancHistoryButton.setDisable(false);
         addUserButton.setDisable(false);
     }
 
     @FXML
-    void login () {
+    void login() {
+        String query = "SELECT Login, Password FROM users";
+        String loginAuh = "";
+        String passAuh = "";
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                loginAuh = resultSet.getString(2);
+                passAuh = resultSet.getString(3);
+                System.out.println(id + " " + loginAuh + " " + passAuh);
+            }
+        } catch (Exception ex) {
+            System.out.println("Connection failed...");
+
+            System.out.println(ex);
+        }
+
         FadeTransition fadeRock = new FadeTransition(Duration.seconds(2), rock);
         fadeRock.setByValue(1.0);
         fadeRock.setToValue(0);
 
-        if (passField.getText().equals(passMass[0]) && logField.getText().equals(logMass[0])) {
+        if (passField.getText().equals(passAuh) && logField.getText().equals(loginAuh)) {
             if (groupUsers.getValue().equals("Пользователь")) {
                 // hide admin functions
             }
@@ -104,15 +133,14 @@ public class Controller implements Initializable {
             logPane.setVisible(false);
             userPane.setVisible(true);
             addUserPane.setVisible(false);
-        }
-        else {
+        } else {
             outputText.setStyle("-fx-text-fill: #c61010");
             outputText.setText("Неверный логин или пароль");
         }
     }
 
     @FXML
-    void exit () {
+    void exit() {
         disableAll();
         FadeTransition fadeRock = new FadeTransition(Duration.seconds(2), rock);
         fadeRock.setByValue(0);
@@ -128,9 +156,32 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            connection = DriverManager.getConnection(url, user, password);
+            System.out.println("Подключение к базе данных успешно установлено!");
+        } catch (SQLException e) {
+            System.out.println("Ошибка при подключении к базе данных:");
+            printSQLException(e);
+        }
         groupUsers.getItems().removeAll(groupUsers.getItems());
         groupUsers.getItems().addAll("Пользователь", "Администратор");
         groupUsers.getSelectionModel().select("Пользователь");
+    }
+
+    public static void printSQLException(SQLException ex) {
+        for (Throwable e : ex) {
+            if (e instanceof SQLException) {
+                e.printStackTrace(System.err);
+                System.err.println("SQLException: " + ((SQLException) e).getSQLState());
+                System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
+                System.err.println("Message: " + e.getMessage());
+                Throwable t = ex.getCause();
+                while (t != null) {
+                    System.out.println("Cause: " + t);
+                    t = t.getCause();
+                }
+            }
+        }
     }
 
 }
