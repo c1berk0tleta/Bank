@@ -21,11 +21,10 @@ import java.sql.*;
 public class Controller implements Initializable {
 
 
-    String url = "jdbc:mysql://213.167.217.126:3306/AssBank";
-    String user = "Danilas";
-    String password = "p@ssw0rd";
-//    String[] logMass = new String[]{"1"};
-//    String[] passMass = new String[]{"2"};
+    String url = "jdbc:mysql://192.168.0.179:3306/AssBank";
+    private String user = "Danilas";
+    private String password = "p@ssw0rd";
+
     private Connection connection;
 
     @FXML
@@ -112,7 +111,7 @@ public class Controller implements Initializable {
                 int id = resultSet.getInt(1);
                 loginAuh = resultSet.getString(2);
                 passAuh = resultSet.getString(3);
-                System.out.println(id + " " + loginAuh + " " + passAuh);
+//                System.out.println(id + " " + loginAuh + " " + passAuh);
             }
         } catch (Exception ex) {
             System.out.println("Connection failed...");
@@ -166,6 +165,7 @@ public class Controller implements Initializable {
         groupUsers.getItems().removeAll(groupUsers.getItems());
         groupUsers.getItems().addAll("Пользователь", "Администратор");
         groupUsers.getSelectionModel().select("Пользователь");
+
     }
 
     public static void printSQLException(SQLException ex) {
